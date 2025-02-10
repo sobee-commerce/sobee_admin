@@ -1,13 +1,9 @@
 module.exports = {
-  arrowParens: "always",
-  semi: false,
-  trailingComma: "none",
+  arrowParens: 'avoid',
+  bracketSameLine: true,
+  bracketSpacing: false,
+  singleQuote: true,
+  trailingComma: 'all',
   tabWidth: 2,
-  endOfLine: "auto",
-  useTabs: false,
-  singleQuote: false,
-  printWidth: 120,
-  jsxSingleQuote: true,
-  organizeImportsSkipDestructiveCodeActions: true,
-  plugins: ["prettier-plugin-organize-imports", "prettier-plugin-tailwindcss"]
-}
+  plugins: ['prettier-plugin-organize-imports', 'prettier-plugin-tailwindcss'],
+};
