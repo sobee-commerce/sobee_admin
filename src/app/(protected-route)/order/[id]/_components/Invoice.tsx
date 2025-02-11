@@ -43,16 +43,26 @@ const Invoice = forwardRef<HTMLDivElement, Props>(({order}, ref) => {
         <Table
           topContent={
             <div className="mb-20">
-              <div className="mb-20">
-                <h1 className="mb-2 text-4xl font-bold">
-                  Invoice No: {order.orderGeneratedId}
-                </h1>
-                <cite>
-                  {format(
-                    order.createdAt?.toString()!,
-                    "EEEE MMMM, yyyy 'at' HH:mm",
-                  )}
-                </cite>
+              <div className="mb-20 flex justify-between gap-4">
+                <div>
+                  <h1 className="mb-2 text-4xl font-bold">
+                    Invoice No: {order.orderGeneratedId}
+                  </h1>
+                  <cite>
+                    {format(
+                      order.createdAt?.toString()!,
+                      "EEEE MMMM, yyyy 'at' HH:mm",
+                    )}
+                  </cite>
+                </div>
+                <Image
+                  unoptimized
+                  src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${order._id}`}
+                  alt="QR Code"
+                  width={200}
+                  height={200}
+                  className="size-[200px] border object-contain"
+                />
               </div>
               <div className="mt-4 flex gap-8">
                 <div className="flex-1 space-y-2">
