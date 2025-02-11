@@ -86,17 +86,25 @@ const CloudinaryPlugin = ({
     const handler = isFilesDisabled ? uploadUrlMutation : uploadFileMutation;
 
     handler.mutate(data, {
-      onSuccess: ({data}) => {
-        if (!data) {
+      onSuccess: data => {
+        console.log(data);
+        if (!data.success) {
+          toast.error('An error occurred while uploading the file.');
+          onUploadError?.();
+          return;
+        }
+        if (!data.data?.urls) {
           toast.error('An error occurred while uploading the file.');
           onUploadError?.();
           return;
         }
         onUploadSuccess?.({
-          urls: data.urls,
+          urls: data.data.urls,
         });
+        _onClose();
       },
-      onError: () => {
+      onError: err => {
+        console.log(err);
         toast.error('An error occurred while uploading the file.');
         onUploadError?.();
       },

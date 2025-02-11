@@ -5,6 +5,7 @@ export * from './cloudinary-form';
 export * from './coupon-form';
 export * from './customer-form';
 export * from './faq-form';
+export * from './notification-form';
 export * from './product-form';
 export * from './question-form';
 export * from './review-form';

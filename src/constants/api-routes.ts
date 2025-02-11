@@ -163,4 +163,9 @@ export const API_ROUTES = {
     CREATE_ROOM: '/chat-room',
     GET_ROOM: '/chat-room/:id',
   },
+  NOTIFICATION: {
+    GET_NOTIFICATIONS: '/notification',
+    PUSH_NOTIFICATION: '/notification/push',
+    DELETE_NOTIFICATION: '/notification/:id',
+  },
 };

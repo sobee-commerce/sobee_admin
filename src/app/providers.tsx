@@ -29,7 +29,7 @@ const Provider = ({children, user, accessToken}: ProviderProps) => {
       <AuthProvider initialUser={user} initialAccessToken={accessToken}>
         <SocketProvider>
           <NextUIProvider>
-            <NextThemesProvider attribute="class" defaultTheme="dark">
+            <NextThemesProvider attribute="class" defaultTheme="light">
               {children}
               <Toaster />
             </NextThemesProvider>

@@ -1,11 +1,10 @@
 import {ENotificationType} from '@/lib/enums';
-import {IUser} from './IUser';
 
 export interface INotification {
+  _id?: string;
   title: string;
   content: string;
-  read: boolean;
-  to?: string | IUser;
-  type: ENotificationType;
+  type: ENotificationType | string;
   redirectUrl?: string;
+  imageUrl?: string;
 }

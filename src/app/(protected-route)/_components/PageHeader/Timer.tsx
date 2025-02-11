@@ -1,16 +1,17 @@
 'use client';
 
-import {useQueryClient} from '@tanstack/react-query';
+import {useReloadDataByTagMutation} from '@/services/utils/utils.mutation';
 import {format} from 'date-fns';
 import {RotateCw} from 'lucide-react';
 import {useEffect, useState} from 'react';
+import toast from 'react-hot-toast';
 
 type Props = {
   keyCache?: string;
 };
 
 const Timer = ({keyCache}: Props) => {
-  const queryClient = useQueryClient();
+  const reloadDataByTagMutation = useReloadDataByTagMutation();
   const [currentTime, setCurrentTime] = useState<Date>(new Date());
   useEffect(() => {
     const interval = setInterval(() => {
@@ -19,16 +20,24 @@ const Timer = ({keyCache}: Props) => {
     return () => clearInterval(interval);
   }, [currentTime]);
 
+  const onRefresh = () => {
+    if (!keyCache) return;
+    toast.loading('Refreshing data...', {
+      duration: Infinity,
+    });
+    reloadDataByTagMutation.mutate(keyCache, {
+      onSuccess: () => {
+        toast.dismiss();
+        toast.success('Data refreshed successfully');
+      },
+    });
+  };
+
   return (
     <>
       <button
         className="group hidden w-fit items-center gap-2 text-sm font-semibold xl:flex"
-        onClick={async () => {
-          keyCache &&
-            (await queryClient.refetchQueries({
-              queryKey: [keyCache],
-            }));
-        }}>
+        onClick={onRefresh}>
         Data Refresh
         <RotateCw size={16} className="group-hover:animate-spin" />
       </button>

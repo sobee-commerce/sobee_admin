@@ -71,4 +71,7 @@ export const CACHE_KEY = {
     GET_ALL: 'ORDER_GET_ALL',
     GET_BY_ID: 'ORDER_GET_BY_ID',
   },
+  NOTIFICATION: {
+    GET_ALL: 'NOTIFICATION_GET_ALL',
+  },
 };

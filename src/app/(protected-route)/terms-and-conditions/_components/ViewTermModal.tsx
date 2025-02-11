@@ -1,3 +1,4 @@
+'use client';
 import {ITerm} from '@/lib/interfaces';
 import {
   Button,

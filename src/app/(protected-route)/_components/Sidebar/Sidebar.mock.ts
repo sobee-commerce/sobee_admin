@@ -1,6 +1,7 @@
 import {APP_ROUTES} from '@/constants';
 import {
   Bell,
+  Bug,
   CircleHelp,
   Framer,
   Layers3,
@@ -233,6 +234,10 @@ export const sidebarMock: TSidebarGroup[] = [
             href: APP_ROUTES.TERMS_AND_CONDITIONS.NEW,
           },
         ],
+      },
+      {
+        title: 'Bug Reports',
+        icon: Bug,
       },
     ],
   },
